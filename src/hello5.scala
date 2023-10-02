@@ -1,17 +1,24 @@
 package prg1.lx01.hello5
 
 /*
- * 関数を宣言し、利用する例。
- * この例はhelloという名前の関数を宣言しています。
- * main関数のなかでhelloは二回呼ばれます。
+ * 変数を宣言し、利用する例。
+ * この例は整数型の変数instrを宣言しています。
+ * この変数は、リストの要素を走査する目的で使われています。
+ * Scalaの変数もC言語の変数と同様に参照や更新ができます。
  */
 
-def hello(role: String, professor: String): Unit = {
-  println(role + "担当は" + professor + "です。")
+val instructors = List("脇田 建（わきた けん）", "七島 幹人（ななしま みきと）")
+
+var instr = 0
+
+def hello(role: String): Unit = {
+  assert(instr < instructors.length)
+  println(s"${role}担当は${instructors(instr)}です。")
+  instr = instr + 1
 }
 
 @main
 def main = {
-  hello("講義", "脇田 建（わきた けん）")
-  hello("演習", "七島 幹人（ななしま みきと）")
+  hello("講義")
+  hello("演習")
 }
